@@ -1,6 +1,6 @@
 {
   "name": "jhsa",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "jhsa",
   "main": "dist/jhsa.cjs.js",
   "module": "dist/jhsa.esm.js",
