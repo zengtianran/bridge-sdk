@@ -5,10 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>hsaSDK</title>
     <script type="text/javascript" src="./js/jhsa.js"></script>
-    <style type="text/css"></style>
+    <style type="text/css">
+      *{
+         margin: 0;
+         padding: 0;
+       }
+      .app-title{
+        font-size: 16px;
+        padding: 15px;
+      }
+      .content{
+          padding: 15px;
+      }
+      .content .content-item{
+          padding: 10px;
+          display: flex;
+          text-align: center;
+          align-items: center;
+      }
+      .content .content-item .content-item__inner{
+          flex: 1;
+      }
+      .content .content-item button{
+          width: 100%;
+          display: block;
+          color: #fff;
+          background: #00965e;
+          border:none;
+          border-radius: 5px;
+          text-align: center;
+          height: 50px;
+          line-height: 50px;
+      }
+    </style>
     </head>
     <body>
+    <div class="app" id="app">
+      <p class="app-title">yh-jsBridge-sdk</p>
+      <div class="content">
+        <div class="content-item">
+            <!-- <h4>调用APP接口</h4> -->
+            <div class="content-item__inner">
+              <button id="jsButton" type="button">调用APP接口</button>
+            </div>
+        </div>
+    </div>
 
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+       // 注册接口供原生调用
+       window.onload = ()=>{
+          jhsa.register('getUserInfo');
+       };
+
+       // 测试模拟调用原生方法
+       document.getElementById('jsButton').addEventListener('click', (e)=>{
+         console.log(e);
+         jhsa.call('faceVerify', {a:1}, function(){console.log('faceVerify')});
+       }, false);
+       // H5调用原生示例
+      //  jhsa.call('faceVerify', {
+      //    a:1
+      //   }, 
+      //   function(responseData){
+      //     // js回调处理
+      //     console.log(responseData)
+      //   });
+
+       // H5注册原生方法示例
+      //  jhsa.register('getUserInfo', function(data, responseCallback){
+      //      // data 原生回调传递数据
+      //      console.lo(data);
+      //      // 回调原生
+      //      responseCallback && responseCallback({})
+      //  });
+      
+
+      // var colorVal = '';
+      // // promise回调函数
+      // function ajaxData(callback){
+      //     var _data = {
+      //       a: 2,
+      //       b: 3
+      //     };
+      //     callback && callback(_data)
+      // }
+      // ajaxData(function(data){
+      //     console.log('回调数据：');
+      //     console.log(data);
+      //     colorVal = data.a;
+      // })
+      // // console.log(colorVal)
+      // function forData(){
+      //    var _data = [1,2,3,4,5];
+      //    for (let index = 0; index < _data.length; index++) {
+      //      if(_data[index] == 3){
+      //        _data.splice(index, 1);
+      //      }
+      //      console.log('forData:', _data[index])
+      //    }
+      //    console.log('forLast>', _data)
+      // }
+      // forData();
+    </script>
     </body>
 </html>
